@@ -66,9 +66,9 @@ function tanggalWaktu($nilai)
 		'November',
 		'Desember'
 	);
-	$pecahkan = explode('-', date('Y \J\a\m H:i-m-d', strtotime($nilai)));
+	$pecahkan = explode('-', date('Y-m-d-H:i', strtotime($nilai)));
 	$bln = isset($pecahkan[1]) ? (int) $pecahkan[1] : ' ';
-	return $pecahkan[2] . ' ' . $bulan[$bln] . ' ' . $pecahkan[0];
+	return $pecahkan[3] .' | '.$pecahkan[2] . ' ' . $bulan[$bln] . ' ' . $pecahkan[0];
 }
 
 

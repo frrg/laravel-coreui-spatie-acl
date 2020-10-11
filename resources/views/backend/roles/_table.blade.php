@@ -8,7 +8,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($roles as $role)
+        @forelse($roles as $role)
         <tr>
             <td>{{ $loop->iteration + $roles->firstItem() - 1 }}</td>
             <td>
@@ -18,11 +18,15 @@
             <td>
                 <p>{{ tanggalWaktu($role->created_at) }}</p>
             </td>
-            <td class="text-right">
-                <a href="{{ route('roles.edit',$role->id) }}" class="btn btn-outline-warning btn-sm">Edit</a>
-                <button @click='hapus(@json(route("roles.destroy",$role->id)))' class="btn btn-outline-danger btn-sm">Delete</button>
+            <td class="text-center">
+                <a href="{{ route('roles.edit',$role->id) }}" class="btn btn-outline-warning btn-sm m-1">Edit</a>
+                <button @click='hapus(@json(route("roles.destroy",$role->id)))' class="btn btn-outline-danger btn-sm m-1">Delete</button>
             </td>
         </tr>
-        @endforeach
+        @empty
+        <tr>
+            <td colspan="4" class="text-center">Roles tidak ada</td>
+        </tr>
+        @endforelse
     </tbody>
 </table>

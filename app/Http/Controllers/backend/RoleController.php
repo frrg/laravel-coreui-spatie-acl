@@ -23,11 +23,14 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $bcrum = $this->bcrum('Role');
-        $roles = Role::paginate($this->limit);
-        return view('backend.roles.index',compact('bcrum','roles'));
+        $roles = Role::where(function ($query) use ($request) {
+            $keywords = '%' . $request->term . '%';
+            $query->where('name', 'like', $keywords);
+        })->paginate($this->limit);
+        return view('backend.roles.index', compact('bcrum', 'roles'));
     }
 
     /**
