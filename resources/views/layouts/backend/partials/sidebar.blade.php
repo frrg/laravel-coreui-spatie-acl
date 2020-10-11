@@ -46,7 +46,7 @@
         </li>
 
         <li class="c-sidebar-nav-item">
-          <a class="c-sidebar-nav-link" href="#" aria-expanded="false">
+          <a class="c-sidebar-nav-link" href="{{ route('roles.index') }}" aria-expanded="false">
             <i class="c-sidebar-nav-icon fa fa-university"></i>
             Role
           </a>

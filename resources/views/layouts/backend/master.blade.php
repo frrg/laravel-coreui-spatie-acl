@@ -28,12 +28,14 @@
   <link href="{{ asset('assets/coreui/css/coreui.min.css') }}" rel="stylesheet">
   <!-- font awesome basic kit -->
   <script src="https://kit.fontawesome.com/91c858ef37.js" crossorigin="anonymous"></script>
+  <!-- sweetalert2 -->
+  <link rel="stylesheet" href="{{ asset('assets/lib/sweetalert2/sweetalert2.min.css') }}">
   @stack('css')
 </head>
 
 <body class="c-app">
   @include('layouts.backend.partials.sidebar')
-  <div class="c-wrapper c-fixed-components">
+  <div class="c-wrapper c-fixed-components" id="app">
     @include('layouts.backend.partials.header')
     <div class="c-body">
       <main class="c-main">
@@ -47,9 +49,15 @@
   <!-- CoreUI and necessary plugins-->
   <!-- CoreUI -->
   <script src="{{ asset('assets/coreui/js/coreui.bundle.min.js') }}"></script>
+
+  <!-- Vue -->
+  <script src="{{ !config('vue.isProduction') ? asset('assets/lib/vue/vue.js') : asset('assets/lib/vue/vue.min.js') }}"></script>
+  <!-- Axios -->
+  <script src="{{ asset('assets/lib/axios/axios.min.js') }}"></script>
   <!-- Jquery -->
   <script src="{{ asset('assets/lib/jquery/jquery-3.5.1.min.js') }}"></script>
   <!-- Plugins and scripts required by this view-->
+  <script src="{{ asset('assets/lib/sweetalert2/sweetalert2.min.js') }}"></script>
   <script src="{{ asset('assets/custom/js/alert.js') }}"></script>
   @stack('scripts')
 </body>

@@ -6,7 +6,13 @@ use Illuminate\Http\Request;
 
 class BackendController extends Controller
 {
-    protected function notif($level, $message,$icon = 'info-circle')
+    protected $limit = 25;
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    protected function notif($level, $message, $icon = 'info-circle')
     {
 
         return   Session::flash('flash_notification', [
