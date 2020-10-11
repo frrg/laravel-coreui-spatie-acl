@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backend;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\BackendController as Controller;
 
 class HomeController extends Controller
 {
@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $bcrum = $this->bcrum('Home');
+        return view('backend.home', compact('bcrum'));
     }
 }

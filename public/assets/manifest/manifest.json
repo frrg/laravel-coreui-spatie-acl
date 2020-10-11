@@ -1,0 +1,15 @@
+{
+    "name": "Name App",
+    "short_name": "NameApp",
+    "lang": "en-US",
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#0275D8",
+    "icons": [
+        {
+            "src": "assets/img/logo/logo.png",
+            "sizes": "432x512",
+            "type": "image/png"
+        }
+    ]
+}
