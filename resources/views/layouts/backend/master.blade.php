@@ -30,6 +30,7 @@
   <script src="https://kit.fontawesome.com/91c858ef37.js" crossorigin="anonymous"></script>
   <!-- sweetalert2 -->
   <link rel="stylesheet" href="{{ asset('assets/lib/sweetalert2/sweetalert2.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/lib/toastr/toastr.min.css') }}">
   @stack('css')
 </head>
 
@@ -57,8 +58,12 @@
   <!-- Jquery -->
   <script src="{{ asset('assets/lib/jquery/jquery-3.5.1.min.js') }}"></script>
   <!-- Plugins and scripts required by this view-->
+  <!-- SweetAlert -->
   <script src="{{ asset('assets/lib/sweetalert2/sweetalert2.min.js') }}"></script>
-  <script src="{{ asset('assets/custom/js/alert.js') }}"></script>
+  <!-- toastr -->
+  <script src="{{ asset('assets/lib/toastr/toastr.min.js') }}"></script>
+
+  @include('layouts.backend.partials.flash')
   @stack('scripts')
 </body>
 

@@ -1,11 +1,29 @@
-@if (session()->has('flash_notification.message'))
-<div class="alert alert-{{ session()->get('flash_notification.level') }} alert-dismissible fade show" role="alert">
+@if(session()->has('flash_notification.message'))
+@push('scripts')
+<script>
+    $(document).ready(function() {
 
-    <i class="fa fa-{{ session()->get('flash_notification.icon') }}"></i> {!! session()->get('flash_notification.message') !!}
+        toastr.options.closeMethod = 'fadeOut';
+        toastr.options.closeDuration = 300;
+        toastr.options.closeEasing = 'swing';
 
-    <button class="close" type="button" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">×</span>
-    </button>
+        var type = "{!! session()->get('flash_notification.level','info') !!}";
+        switch (type) {
+            case 'info':
+                toastr.info("{!! session()->get('flash_notification.message') !!}");
+                break;
+            case 'warning':
+                toastr.warning("{!! session()->get('flash_notification.message') !!}");
+                break;
+            case 'success':
+                toastr.success("{!! session()->get('flash_notification.message') !!}");
+                break;
+            case 'error':
+                toastr.error("{!! session()->get('flash_notification.message') !!}");
+                break;
+        }
+    });
+</script>
+@endpush
 
-</div>
 @endif

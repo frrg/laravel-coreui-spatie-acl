@@ -91,14 +91,7 @@ Roles
                                     this.errorMessage = response.data.message;
                                 } else if (response.data.code === 200) {
 
-                                    window.Swal.fire({
-                                        title: 'Berhasil Terhapus!',
-                                        message: response.data.message,
-                                        icon: 'success',
-                                        timer: 1000,
-                                        timerProgressBar: true,
-                                        showConfirmButton: false,
-                                    }).then(() => {
+                                    toastr.success(response.data.message).then(() => {
                                         location.reload()
                                     });
 
@@ -117,11 +110,11 @@ Roles
             },
             showImage: function(link) {
 
-                    window.Swal.fire({
-                        imageUrl: link,
-                        width: 600,
-                        padding: '3em',
-                    })
+                window.Swal.fire({
+                    imageUrl: link,
+                    width: 600,
+                    padding: '3em',
+                })
             }
         }
     });

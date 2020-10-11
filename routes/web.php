@@ -20,4 +20,5 @@ Auth::routes();
 Route::group(['namespace' => 'backend', 'prefix' => 'mg-admin'], function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::resource('roles', 'RoleController');
+    Route::get('roles/check/{id}','RoleController@check')->name('roles.check');
 });

@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class BackendController extends Controller
 {
     protected $limit = 25;
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -16,9 +18,9 @@ class BackendController extends Controller
     {
 
         return   Session::flash('flash_notification', [
-            'level' => $level,
+            'level'   => $level,
             'message' => $message,
-            'icon' => $icon
+            'icon'    => $icon
         ]);
     }
 

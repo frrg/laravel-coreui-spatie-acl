@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\BackendController as Controller;
+use App\Http\Requests\RoleRequest;
+use Illuminate\Support\Facades\DB;
 
 class RoleController extends Controller
 {
@@ -40,7 +42,9 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        $permission = Permission::get();
+        $bcrum = $this->bcrum('Create', route('roles.index'), 'Roles');
+        return view('backend.roles.create', compact('permission', 'bcrum'));
     }
 
     /**
@@ -49,9 +53,13 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RoleRequest $request)
     {
-        //
+
+        $role = Role::create(['name' => $request->name]);
+        $role->syncPermissions($request->permissions);
+        $this->notif('success', 'Role created successfully', 'check');
+        return redirect()->route('roles.index');
     }
 
     /**
@@ -73,7 +81,16 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $bcrum = $this->bcrum('Edit Role', route('roles.index'), 'Roles');
+
+        $role = Role::find($id);
+        $permission = Permission::get();
+        $rolePermissions = DB::table("role_has_permissions")
+            ->where("role_has_permissions.role_id", $id)
+            ->pluck('role_has_permissions.permission_id', 'role_has_permissions.permission_id')
+            ->all();
+
+        return view('backend.roles.edit', compact('role', 'permission', 'rolePermissions', 'bcrum'));
     }
 
     /**
@@ -83,9 +100,18 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RoleRequest $request, $id)
     {
-        //
+
+        $role = Role::find($id);
+        $role->name = $request->name;
+        $role->save();
+
+        $role->syncPermissions($request->permissions);
+
+        $this->notif('success', 'Role Edited successfully', 'check');
+
+        return redirect()->route('roles.index');
     }
 
     /**
@@ -96,6 +122,19 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = Role::findOrFail($id);
+        $delete->delete();
+
+        return response()->success(200, 'Role ' . $delete->name . ' berhasil dihapus');
+    }
+
+    public function check($id)
+    {
+        $data['role'] = Role::where('id', $id)->select('name')->first();
+        $data['permission'] = Permission::select('id', 'name')->get();
+        $data['rolePermissions'] = DB::table("role_has_permissions")->where("role_has_permissions.role_id", $id)
+            ->pluck('role_has_permissions.permission_id', 'role_has_permissions.permission_id')
+            ->all();
+        return response()->json($data, 200);
     }
 }

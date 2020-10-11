@@ -12,6 +12,7 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.18.35",
         "laravel/tinker": "^2.0",
+        "laravelcollective/html": "^6.2",
         "spatie/laravel-permission": "^3.17",
         "webpatser/laravel-uuid": "^3.0"
     },
