@@ -1,7 +1,11 @@
 <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
   <div class="c-sidebar-brand d-lg-down-none">
-    <div class="c-sidebar-brand-full" alt="Logo">
-      <img src="{{ asset('assets/img/logo/logo-full.png') }}" width="118" height="46" alt="logo">
+    <div class="c-sidebar-brand-full" alt="{{ config('app.name') }} Logo">
+      <div class="row">
+        <div class="col-sm-12">
+          <img src="{{ asset('assets/img/logo/logo-full.png') }}" class="img-fluid" style="max-width:100px">
+        </div>
+      </div>
     </div>
     <div class="c-sidebar-brand-minimized" alt="logo">
       <img src="{{ asset('assets/img/logo/logo.png') }}" width="46" height="46" alt="logo">
