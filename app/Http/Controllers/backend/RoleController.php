@@ -70,7 +70,16 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        //
+        
+        $bcrum = $this->bcrum('Role Details',route('roles.index'),'Data Roles');
+
+        $role = Role::find($id);
+        
+        $rolePermissions = Permission::join("role_has_permissions","role_has_permissions.permission_id","=","permissions.id")
+            ->where("role_has_permissions.role_id",$id)
+            ->get();
+
+        return view('backend.roles.show',compact('role','rolePermissions','bcrum'));
     }
 
     /**
@@ -90,7 +99,7 @@ class RoleController extends Controller
             ->pluck('role_has_permissions.permission_id', 'role_has_permissions.permission_id')
             ->all();
 
-        return view('backend.roles.edit', compact('role', 'permission', 'rolePermissions', 'bcrum'));
+        return view('backend.roles.edit', compact('role', 'bcrum'));
     }
 
     /**
