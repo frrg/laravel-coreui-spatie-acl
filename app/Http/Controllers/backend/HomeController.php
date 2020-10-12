@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\backend;
 
-use App\Http\Controllers\BackendController as Controller;
+use App\Http\Controllers\backend\BackendController as Controller;
 
 class HomeController extends Controller
 {

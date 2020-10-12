@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backend;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 
 class BackendController extends Controller
@@ -14,13 +15,12 @@ class BackendController extends Controller
         $this->middleware('auth');
     }
 
-    protected function notif($level, $message, $icon = 'info-circle')
+    protected function notif($level, $message)
     {
 
         return   Session::flash('flash_notification', [
             'level'   => $level,
             'message' => $message,
-            'icon'    => $icon
         ]);
     }
 

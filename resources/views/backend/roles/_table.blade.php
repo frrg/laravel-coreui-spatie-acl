@@ -20,7 +20,7 @@
             </td>
             <td class="text-center">
 
-                <a href="{{ route('roles.show',$role->id) }}" class="btn btn-outline-dark btn-sm m-1">Show</a>
+                <a href="{{ route('roles.show',$role->id) }}" class="btn btn-outline-info btn-sm m-1">Show</a>
 
                 <a href="{{ route('roles.edit',$role->id) }}" class="btn btn-outline-warning btn-sm m-1">Edit</a>
                 <button @click='hapus(@json(route("roles.destroy",$role->id)))' class="btn btn-outline-danger btn-sm m-1">Delete</button>

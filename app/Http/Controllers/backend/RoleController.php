@@ -5,7 +5,7 @@ namespace App\Http\Controllers\backend;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-use App\Http\Controllers\BackendController as Controller;
+use App\Http\Controllers\backend\BackendController as Controller;
 use App\Http\Requests\RoleRequest;
 use Illuminate\Support\Facades\DB;
 
@@ -58,7 +58,7 @@ class RoleController extends Controller
 
         $role = Role::create(['name' => $request->name]);
         $role->syncPermissions($request->permissions);
-        $this->notif('success', 'Role created successfully', 'check');
+        $this->notif('success', 'Role created successfully');
         return redirect()->route('roles.index');
     }
 
@@ -118,7 +118,7 @@ class RoleController extends Controller
 
         $role->syncPermissions($request->permissions);
 
-        $this->notif('success', 'Role Edited successfully', 'check');
+        $this->notif('success', 'Role Edited successfully');
 
         return redirect()->route('roles.index');
     }

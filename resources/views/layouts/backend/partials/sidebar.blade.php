@@ -37,20 +37,22 @@
         Settings
       </a>
       <ul class="c-sidebar-nav-dropdown-items">
-
+        @can('read-user')
         <li class="c-sidebar-nav-item">
-          <a class="c-sidebar-nav-link" href="#" aria-expanded="false" target="_top">
+          <a class="c-sidebar-nav-link" href="{{ route('users.index') }}" aria-expanded="false">
             <i class="c-sidebar-nav-icon fa fa-user"></i>
             User
           </a>
         </li>
-
+        @endcan
+        @can('read-role')
         <li class="c-sidebar-nav-item">
           <a class="c-sidebar-nav-link" href="{{ route('roles.index') }}" aria-expanded="false">
             <i class="c-sidebar-nav-icon fa fa-university"></i>
             Role
           </a>
         </li>
+        @endcan
 
       </ul>
     </li>
