@@ -9,7 +9,7 @@ Home
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="display-1 text-center">EONESIA.ID</h4>
+                        <h4 class="display-1 text-center">Dashboard</h4>
                     </div>
                 </div>
             </div>
