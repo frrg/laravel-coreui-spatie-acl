@@ -3,7 +3,7 @@
 Data User
 @endsection
 @section('content')
-<div class="container-fluid">
+<div v-cloak class="container-fluid">
     <div class="fade-in">
         <div class="row">
             <div class="col-lg-12">
@@ -42,7 +42,7 @@ Data User
 
                         <div class="row">
                             <div class="col-lg-12">
-                                <div v-if="hasError" class="alert alert-danger mb-3">@{{ errorMessage }}</div>
+                                <div v-if="hasError" v-cloak class="alert alert-danger mb-3">@{{ errorMessage }}</div>
                                 @include('backend.users._table')
 
                                 {!! $users->appends(request()->except('page'))->links() !!}

@@ -31,6 +31,7 @@
   <!-- sweetalert2 -->
   <link rel="stylesheet" href="{{ asset('assets/lib/sweetalert2/sweetalert2.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/lib/toastr/toastr.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/custom/css/custom.css') }}">
   @stack('css')
 </head>
 
